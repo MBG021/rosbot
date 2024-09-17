@@ -8,6 +8,8 @@ Aquí se implementarán y probarán diversos algoritmos para navegación autóno
 
 $ git clone https://github.com/MBG021/rosbot
 
+# incluir en la carpeta oculta de .gazebo el paquete de trabajo
+
 # Instalación de Dependencias
 
 Actualiza el sistema e instala las dependencias necesarias:
@@ -38,7 +40,7 @@ export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/ruta/a la carpeta/models/en tu work
 
 Navega al directorio del proyecto y compila con colcon:
 
-$ cd Rosbot-pls/wheeltec_robot_RAS
+$ cd rosbot
 
 $ colcon build
 
@@ -54,4 +56,4 @@ $ ros2 launch rosbot rviz_robot.launch.py
 
 Para simular el rover en Gazebo, usa el siguiente comando:
 
-$ ros2 launch rosbot rsp.launch.py
+$ ros2 launch rosbot urdf_gz.launch.py
