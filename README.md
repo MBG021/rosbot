@@ -21,7 +21,10 @@ $ sudo apt-get install ros-humble-gazebo-*
 
 Agrega la siguiente línea a tu archivo .bashrc para asegurarte de que el entorno ROS esté correctamente configurado:
 
+source /usr/share/gazebo/setup.bash
+source /usr/share/gazebo-11/setup.bash
 echo $ROS_PACKAGE_PATH
+export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/ruta/a la carpeta/models/en tu work space/
 
 # Compilación del Proyecto
 
