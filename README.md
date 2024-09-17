@@ -8,7 +8,7 @@ Aquí se implementarán y probarán diversos algoritmos para navegación autóno
 
 $ git clone https://github.com/MBG021/rosbot
 
-# incluir en la carpeta oculta de .gazebo el paquete de trabajo
+# Incluir en la carpeta oculta de .gazebo una carpeta llamada rosbot, dentro de la cual incluiremos nuestra carpeta meshes y el archivo model.config
 
 # Instalación de Dependencias
 
