@@ -18,7 +18,7 @@ find_package(rclpy REQUIRED)
 include_directories(include)
 
 install(
-  DIRECTORY config include launch maps media meshes models params rviz src rosbot urdf worlds
+  DIRECTORY launch media meshes models rosbot rviz scripts urdf worlds
   DESTINATION share/${PROJECT_NAME}
 )
 
