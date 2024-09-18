@@ -30,7 +30,7 @@
     
 
     <!-- Especificar colores de gazebo -->
-    <gazebo reference="base_link">
+    <gazebo reference="chasis">
         <material>Gazebo/Blue</material>
     </gazebo>
     <gazebo reference="right_wheel">

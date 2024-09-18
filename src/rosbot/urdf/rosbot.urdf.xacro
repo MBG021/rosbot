@@ -25,7 +25,7 @@
       utilizan etiquetas `<gazebo>` para personalizar la apariencia de componentes 
       específicos del robot dentro del entorno de simulación. Cada etiqueta 
       `<gazebo reference="..." >` se refiere a un componente en particular, como 
-      `base_link` o las diferentes ruedas, y asigna un material específico para 
+      `chasis` o las diferentes ruedas, y asigna un material específico para 
       su visualización en Gazebo.
       
     @note Es necesario modificar la ruta del archivo "include.xacro" según la 
@@ -45,12 +45,12 @@
 
   <joint name="base_joint" type="fixed">
     <parent link="base_footprint"/>
-    <child link="base_link"/>
+    <child link="chasis"/>
     <origin xyz="0 0 0.19" />
   </joint>
 
   <!--Chasis-->
-  <link name="base_link">
+  <link name="chasis">
     <visual>
       <geometry>
         <mesh filename="package://rosbot/meshes/box.STL" scale="0.001 0.001 0.001"/>
@@ -84,7 +84,7 @@
     </xacro:inertial_chasis>
   </link>
   <joint name="base_camara" type="fixed">
-    <parent link="base_link"/>
+    <parent link="chasis"/>
     <child link="camara_link"/>
     <origin xyz=" 0.30 0 0.1" rpy="0 -0.156 0"/>
     <limit effort="100" velocity="1" lower="-0.78" upper="0.78"/>
@@ -114,7 +114,7 @@
   </link>
      
   <joint name="lidar_joint" type="fixed">
-    <parent link="base_link"/>
+    <parent link="chasis"/>
     <child link="lidar_link"/>
     <origin xyz=" 0.2 0 0.15" rpy="0 0 0"/>
   </joint>
@@ -181,7 +181,7 @@
   </link>
 
   <joint name="joint_right_wheel" type="continuous">
-    <parent link="base_link"/>
+    <parent link="chasis"/>
     <child link="right_wheel"/>
     <origin xyz="-0.27 -0.295 -0.07" rpy="1.57 0 0"/>
     <axis xyz="0 0 1"/>
@@ -209,7 +209,7 @@
   </link>
 
   <joint name="joint_left_wheel" type="continuous">
-    <parent link="base_link"/>
+    <parent link="chasis"/>
     <child link="left_wheel"/>
     <origin xyz="-0.27 0.295 -0.07" rpy="1.57 0 0"/>
     <axis xyz="0 0 1"/>
@@ -218,7 +218,7 @@
   <link name="master">
   </link>
   <joint name="master_joint" type="revolute">
-    <parent link="base_link"/>
+    <parent link="chasis"/>
     <child link="master"/>
     <origin xyz="0 0 0" rpy= "1.57 0 0"/>
     <axis xyz="0 1 0"/>
@@ -258,7 +258,7 @@
   </link>
 
   <joint name="joint_right_wheel_front" type="revolute">
-    <parent link="base_link"/>
+    <parent link="chasis"/>
     <child link="right_wheel_front_assembly"/>
     <origin xyz="0.27 -0.295 -0.07" rpy="1.57 0 0"/>
     <axis xyz="0 1 0"/>
@@ -305,7 +305,7 @@
   </link>
 
   <joint name="joint_left_wheel_front" type="revolute">
-    <parent link="base_link"/>
+    <parent link="chasis"/>
     <child link="left_wheel_front_assembly"/>
     <origin xyz="0.27 0.295 -0.07" rpy="1.57 0 0"/>
     <axis xyz="0 1 0"/>
