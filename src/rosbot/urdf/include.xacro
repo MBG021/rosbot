@@ -1,19 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
-    <!-- 
-    Descripción:
-    Este archivo Xacro define configuraciones estándar de materiales y macros para calcular las inercias de componentes específicos de un modelo de robot. 
-    Se utiliza en conjunto con un archivo URDF para asignar colores a las diferentes partes del robot y para realizar cálculos automáticos de inercias basados en las dimensiones y masas de los componentes.
-
-    - Materiales: Se definen tres colores (blanco, naranja y azul) que pueden ser aplicados a las partes visuales del robot.
-    - Cálculo de inercias: Se proporcionan macros para calcular la matriz de inercia de componentes como el chasis y las ruedas del robot.
-
-    Detalles:
-    - La macro `inertial_chasis` calcula la inercia de un chasis rectangular utilizando sus dimensiones y masa.
-    - La macro `inertial_wheel` calcula la inercia de una rueda cilíndrica basándose en su masa, longitud y radio.
-    -->
-
     <!-- Especificación de colores -->
     <material name="white">
         <color rgba="1 1 1 1"/>
@@ -37,22 +24,27 @@
     </gazebo>
     <gazebo reference="right_wheel">
         <material>Gazebo/White</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
     <gazebo reference="left_wheel">
         <material>Gazebo/White</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
     <gazebo reference="right_wheel_front">
         <material>Gazebo/White</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
     <gazebo reference="left_wheel_front">
         <material>Gazebo/White</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
-
-    <!-- Especificación de cálculos estándar de inercias: https://en.wikipedia.org/wiki/List_of_moments_of_inertia -->
-    <!-- Estas macros utilizan la funcionalidad matemática de Xacro -->
-
+    
     <!-- Macro para calcular la inercia de un chasis rectangular -->
-    <xacro:macro name="inertial_chasis" params="mass x y z *origin">
+    <xacro:macro name="inertial_box" params="mass x y z *origin">
         <inertial>
             <xacro:insert_block name="origin"/>
             <mass value="${mass}" />
@@ -63,7 +55,7 @@
     </xacro:macro>
 
     <!-- Macro para calcular la inercia de una rueda cilíndrica -->
-    <xacro:macro name="inertial_wheel" params="mass length radius *origin">
+    <xacro:macro name="inertial_cylinder" params="mass length radius *origin">
         <inertial>
             <xacro:insert_block name="origin"/>
             <mass value="${mass}" />

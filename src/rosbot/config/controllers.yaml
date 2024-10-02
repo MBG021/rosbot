@@ -1,0 +1,69 @@
+# Define the ros2_controller to be used
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    # This controller is necessary to read the joints' variables
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    tricycle_controller:
+      type: tricycle_controller/TricycleController
+
+tricycle_controller:
+  ros__parameters:
+    # Nombre del joint que proporciona la tracción (ruedas traseras)
+    traction_joint_name: "joint_left_rear_wheel"
+    #traction_right_joint_name: "joint_right_rear_wheel"
+
+    # Nombre del joint que controla la dirección (rueda delantera)
+    steering_joint_name: "master_joint"
+
+    # Distancia entre el eje delantero y el trasero
+    wheelbase: 1.2  # Ajusta esto al tamaño real de tu robot
+    
+    # Radio de las ruedas
+    wheel_radius: 0.12  # Ajusta esto al tamaño real de tus ruedas
+
+    # Nombres de los frames para la odometría
+    odom_frame_id: "base_footprint"
+    base_frame_id: "chasis"
+
+    # Covarianza de la odometría (pose)
+    pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
+    
+    # Covarianza de la odometría (twist)
+    twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
+
+    # Odometría abierta o cerrada
+    open_loop: false
+    
+    # Publicar la transformación entre odom y base_link
+    enable_odom_tf: true
+
+    # Tiempo de espera para cmd_vel en milisegundos
+    cmd_vel_timeout: 500
+    
+    # Tamaño de la ventana de promedio para la velocidad
+    velocity_rolling_window_size: 10
+
+    # Configuración de los límites de la tracción (para ambas ruedas)
+    traction:
+      max_velocity: 10.0
+      min_velocity: 0.0
+      max_acceleration: 5.0
+      min_acceleration: 0.0
+      max_deceleration: 5.0
+      min_deceleration: 0.0
+      max_jerk: 2.0
+      min_jerk: 0.0
+
+    # Configuración de los límites del steering (dirección)
+    steering:
+      max_position: 1.5708  # +90 grados
+      min_position: 0.0 # -90 grados
+      max_velocity: 0.5
+      min_velocity: 0.0
+      max_acceleration: 0.01
+      min_acceleration: 0.0
+

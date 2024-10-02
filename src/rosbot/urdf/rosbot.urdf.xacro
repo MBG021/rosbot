@@ -1,45 +1,8 @@
 <?xml version="1.0"?>
 
-<!-- 
-    @file rosbot.urdf.xacro
-    @brief Descripción del robot móvil Rosbot utilizando Xacro y URDF.
-
-    Este archivo define la estructura, visualización y propiedades físicas del 
-    robot móvil Rosbot. Utiliza macros Xacro para incluir elementos comunes y 
-    define las características de los componentes principales del robot, tales 
-    como el chasis y las ruedas. Además, configura los materiales y la simulación 
-    en Gazebo para la visualización y simulación del robot en un entorno 3D.
-
-    Características principales:
-    - Incluye un archivo "include.xacro" que contiene definiciones comunes como 
-      colores y cálculos de inercias.
-    - Define los enlaces (links) para el chasis, las ruedas y otras partes del robot.
-    - Configura las uniones (joints) entre los diferentes componentes del robot, 
-      incluyendo las restricciones y la dinámica de las ruedas.
-    - Aplica materiales específicos para la visualización en Gazebo, los cuales 
-      están definidos en un archivo separado.
-    - Las inercias de los componentes, tales como el chasis y las ruedas, son 
-      calculadas automáticamente mediante macros definidas en un archivo separado.
-    
-    - En la sección que define los parámetros para la simulación en Gazebo, se 
-      utilizan etiquetas `<gazebo>` para personalizar la apariencia de componentes 
-      específicos del robot dentro del entorno de simulación. Cada etiqueta 
-      `<gazebo reference="..." >` se refiere a un componente en particular, como 
-      `chasis` o las diferentes ruedas, y asigna un material específico para 
-      su visualización en Gazebo.
-      
-    @note Es necesario modificar la ruta del archivo "include.xacro" según la 
-    estructura de directorios de tu proyecto.
-
-    @usage Este archivo es utilizado en la simulación del robot Rosbot en entornos 
-    como RViz y Gazebo, y puede ser integrado en lanzadores ROS2 para su ejecución.
--->
-
-
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rosbot">
 
   <xacro:include filename="include.xacro" />
-
 
   <link name="base_footprint"/>
 
@@ -64,9 +27,12 @@
         <mesh filename="package://rosbot/meshes/box.STL" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
-    <xacro:inertial_chasis mass="20" x="0.762" y="0.35" z="0.15">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-    </xacro:inertial_chasis>
+    <inertial>
+      <origin xyz="-0.381 0.2 -0.075" rpy = "1.57 0 0"/>
+      <mass value="30"/>
+      <inertia  ixx="456250.0" ixy="0" ixz="0" iyy="1844000.0" iyz="0" izz="1500250.0" />
+    </inertial>
+    
   </link>
 
   <!--Right-->
@@ -85,12 +51,12 @@
         <cylinder length="0.08" radius="0.12"/>
       </geometry>
     </collision>
-    <xacro:inertial_wheel mass="1.0" length="0.08" radius="0.12">
+    <xacro:inertial_cylinder mass="1.0" length="0.08" radius="0.12">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-    </xacro:inertial_wheel>
+    </xacro:inertial_cylinder>
   </link>
 
-  <joint name="joint_right_wheel" type="continuous">
+  <joint name="joint_right_rear_wheel" type="continuous">
     <parent link="chasis"/>
     <child link="right_wheel"/>
     <origin xyz="-0.27 -0.295 -0.07" rpy="1.57 0 0"/>
@@ -113,12 +79,12 @@
         <cylinder length="0.08" radius="0.12"/>
       </geometry>
     </collision>
-    <xacro:inertial_wheel mass="1.0" length="0.08" radius="0.12">
+    <xacro:inertial_cylinder mass="1.0" length="0.08" radius="0.12">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-    </xacro:inertial_wheel>
+    </xacro:inertial_cylinder>
   </link>
 
-  <joint name="joint_left_wheel" type="continuous">
+  <joint name="joint_left_rear_wheel" type="continuous">
     <parent link="chasis"/>
     <child link="left_wheel"/>
     <origin xyz="-0.27 0.295 -0.07" rpy="1.57 0 0"/>
@@ -143,9 +109,9 @@
       <origin xyz="0 0 0"/>
       <material name="white"/>
     </visual>
-    <xacro:inertial_wheel mass="1.0" length="0.001" radius="0.04">
+    <xacro:inertial_cylinder mass="1.0" length="0.001" radius="0.04">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-    </xacro:inertial_wheel>
+    </xacro:inertial_cylinder>
   </link>
 
   <link name="right_wheel_front">
@@ -162,9 +128,9 @@
         <cylinder length="0.08" radius="0.12"/>
       </geometry>
     </collision>
-    <xacro:inertial_wheel mass="1.0" length="0.08" radius="0.12">
+    <xacro:inertial_cylinder mass="1.0" length="0.08" radius="0.12">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-    </xacro:inertial_wheel>
+    </xacro:inertial_cylinder>
   </link>
 
   <joint name="joint_right_wheel_front" type="revolute">
@@ -191,9 +157,9 @@
       <origin xyz="0 0 0"/>
       <material name="white"/>
     </visual>
-    <xacro:inertial_wheel mass="1.0" length="0.001" radius="0.04">
+    <xacro:inertial_cylinder mass="1.0" length="0.001" radius="0.04">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-    </xacro:inertial_wheel>
+    </xacro:inertial_cylinder>
   </link>
   <link name="left_wheel_front">
     <visual>
@@ -209,9 +175,9 @@
         <cylinder length="0.08" radius="0.12"/>
       </geometry>
     </collision>
-    <xacro:inertial_wheel mass="1.0" length="0.08" radius="0.12">
+    <xacro:inertial_cylinder mass="1.0" length="0.08" radius="0.12">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-    </xacro:inertial_wheel>
+    </xacro:inertial_cylinder>
   </link>
 
   <joint name="joint_left_wheel_front" type="revolute">
@@ -245,9 +211,9 @@
         <box size="0.04 0.17 0.03"/>
       </geometry>
     </collision>
-    <xacro:inertial_chasis mass="0.181" x="0.04" y="0.17" z="0.03">
+    <xacro:inertial_box mass="0.181" x="0.04" y="0.17" z="0.03">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-    </xacro:inertial_chasis>
+    </xacro:inertial_box>
   </link>
   
   <joint name="camera_joint" type="fixed">
@@ -371,7 +337,6 @@
   <!-- IMU -->
   <link name="imu_link">
     <inertial>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
       <mass value="0.01"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
@@ -410,14 +375,6 @@
           <z>true</z>
         </orientation>
       </imu>
-      <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
-        <ros>
-          <namespace>/rosbot</namespace>
-          <remapping>~/imu/data:=/imu/data</remapping>
-        </ros>
-        <update_rate>50.0</update_rate>
-        <alwaysOn>true</alwaysOn>
-      </plugin>
     </sensor>
   </gazebo>
 
@@ -440,7 +397,7 @@
   <joint name="gps_joint" type="fixed">
     <parent link="chasis"/>
     <child link="gps_link"/>
-    <origin xyz="0.0 0.0 0.3" rpy="0 0 0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
   </joint>
 
   <gazebo reference="gps_link">
@@ -450,14 +407,9 @@
         <position_sensing>true</position_sensing>
         <velocity_sensing>true</velocity_sensing>
       </gps>
-      <plugin name="gps_plugin" filename="libgazebo_ros_gps.so">
-        <ros>
-          <namespace>/rosbot</namespace>
-          <remapping>~/gps/fix:=/gps/fix</remapping>
-          <update_rate>1.0</update_rate>
-        </ros>
-      </plugin>
     </sensor>
   </gazebo>
+
+  <xacro:include filename="gazebo.xacro"/>
 
 </robot>

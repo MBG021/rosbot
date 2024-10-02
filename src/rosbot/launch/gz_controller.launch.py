@@ -13,7 +13,7 @@ from launch.substitutions import LaunchConfiguration
 pkg_filepath = get_package_share_directory("rosbot")
 
 # Process xacro file
-xacro_filepath = os.path.join(pkg_filepath, "urdf", "rosbot.urdf")
+xacro_filepath = os.path.join(pkg_filepath, "urdf", "rosbot.urdf.xacro")
 robot_description_file = xacro.process_file(xacro_filepath).toxml()
 
 # Define world file path
@@ -60,12 +60,34 @@ def generate_launch_description():
         arguments=['-topic', 'robot_description', '-entity', 'rosbot'],
         output="screen"
     )
+    
+    ros2_control_node = Node(
+        package="controller_manager",
+        executable="ros2_control_node",
+        remappings=[
+            ("~/robot_description", "robot_description")
+		]
+    )
+    jsb_spawner_node = Node(
+		package="controller_manager",
+		executable="spawner",
+		arguments= ["joint_state_broadcaster"]
+	)
+    jgpc_spawner_node = Node(
+		package="controller_manager",
+		executable="spawner",
+		arguments= ["tricycle_controller"]
+	)
 
+    
     nodes_to_run = [
         use_sim_time_arg,
         use_ros2_control_arg,
         robot_state_publisher_node,
         gazebo_cmd, 
-        gazebo_spawner_node
+        gazebo_spawner_node,
+        ros2_control_node,
+        jsb_spawner_node,
+        jgpc_spawner_node
     ]
     return LaunchDescription(nodes_to_run)

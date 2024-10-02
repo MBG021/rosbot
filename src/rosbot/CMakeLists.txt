@@ -18,18 +18,16 @@ find_package(rclpy REQUIRED)
 include_directories(include)
 
 install(
-  DIRECTORY launch media meshes models rosbot rviz scripts urdf worlds
+  DIRECTORY launch config media meshes models rosbot scripts urdf worlds
   DESTINATION share/${PROJECT_NAME}
 )
 
 # Install Python modules
 ament_python_install_package(${PROJECT_NAME})
  
-# Install Python executables
-install(PROGRAMS
-  scripts/lift_controller.py
-  DESTINATION lib/${PROJECT_NAME}
-)
+# Instalar scripts de Python
+file(GLOB SCRIPT_FILES "scripts/*.py")
+install(PROGRAMS ${SCRIPT_FILES} DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
