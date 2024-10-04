@@ -14,7 +14,6 @@ tricycle_controller:
   ros__parameters:
     # Nombre del joint que proporciona la tracción (ruedas traseras)
     traction_joint_name: "joint_left_rear_wheel"
-    #traction_right_joint_name: "joint_right_rear_wheel"
 
     # Nombre del joint que controla la dirección (rueda delantera)
     steering_joint_name: "master_joint"
@@ -24,6 +23,10 @@ tricycle_controller:
     
     # Radio de las ruedas
     wheel_radius: 0.12  # Ajusta esto al tamaño real de tus ruedas
+
+    # optional, defaults to "cmd_vel", the topic to subscribe for velocity
+    # commands
+    twist_sub: cmd_vel
 
     # Nombres de los frames para la odometría
     odom_frame_id: "base_footprint"

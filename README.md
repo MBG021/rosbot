@@ -24,6 +24,8 @@ $ sudo apt-get install ros-humble-xacro
 
 $ sudo apt-get install ros-humble-gazebo-*
 
+$ ros-humble-rosgraph*
+
 # Configuración del Entorno
 
 Agrega la siguiente línea a tu archivo .bashrc para asegurarte de que el entorno ROS esté correctamente configurado:

@@ -13,7 +13,7 @@ from launch.substitutions import LaunchConfiguration
 pkg_filepath = get_package_share_directory("rosbot")
 
 # Process xacro file
-xacro_filepath = os.path.join(pkg_filepath, "urdf", "rosbot.urdf")
+xacro_filepath = os.path.join(pkg_filepath, "urdf", "rosbot.urdf.xacro")
 robot_description_file = xacro.process_file(xacro_filepath).toxml()
 
 # Define world file path
