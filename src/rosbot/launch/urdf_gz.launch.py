@@ -6,8 +6,9 @@ import xacro
 from launch.actions import ExecuteProcess
 from launch_ros.actions import Node
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument,IncludeLaunchDescription, TimerAction
 from launch.substitutions import LaunchConfiguration
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 # Import package's filepath
 pkg_filepath = get_package_share_directory("rosbot")
@@ -37,10 +38,16 @@ def generate_launch_description():
         default_value='true',
         description='Use ros2_control if true'
     )
+    rviz = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([os.path.join(pkg_filepath,'launch','rviz_robot.launch.py'
+        )])
+    )
 
     robot_state_publisher_node = Node(
         package= "robot_state_publisher",
         executable= "robot_state_publisher",
+        name='robot_state_publisher',
+        output='screen',
         parameters=[
             {
                 "robot_description": robot_description_file,
@@ -64,6 +71,7 @@ def generate_launch_description():
     nodes_to_run = [
         use_sim_time_arg,
         use_ros2_control_arg,
+        rviz,
         robot_state_publisher_node,
         gazebo_cmd, 
         gazebo_spawner_node
