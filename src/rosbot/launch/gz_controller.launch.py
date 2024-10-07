@@ -50,7 +50,7 @@ def generate_launch_description():
     )
     
     gazebo_cmd = ExecuteProcess(
-        cmd=["gazebo", "--verbose", "-s", "libgazebo_ros_factory.so", world_file_path],
+        cmd=["gazebo", "--verbose", "-s", "libgazebo_ros_factory.so"],
         output="screen"
     )
     
@@ -74,7 +74,7 @@ def generate_launch_description():
     jgpc_spawner_node = Node(
 		package="controller_manager",
 		executable="spawner",
-		arguments= ["tricycle_controller"]
+		arguments= ["tricycle_steering_controller"]
 	)
 
     
