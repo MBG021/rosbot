@@ -33,26 +33,38 @@
         <material>Gazebo/Black</material>
     </gazebo>
     <gazebo reference="right_wheel">
-        <mu1 value="0.001"/>
-        <mu2 value="0.01"/>
+        <mu1 value="1.0"/>
+        <mu2 value="1.0"/>
+        <kp  value="10000000.0" />
+        <kd  value="1.0" />
+        <fdir1 value="1 0 0"/>
         <material>Gazebo/White</material>
         <gravity>1</gravity>
     </gazebo>
     <gazebo reference="left_wheel">
-        <mu1 value="0.001"/>
-        <mu2 value="0.01"/>
+        <mu1 value="1.0"/>
+        <mu2 value="1.0"/>
+        <kp  value="10000000.0" />
+        <kd  value="1.0" />
+        <fdir1 value="1 0 0"/>
         <material>Gazebo/White</material>
         <gravity>1</gravity>
     </gazebo>
     <gazebo reference="right_wheel_front">
-        <mu1 value="0.001"/>
-        <mu2 value="0.01"/>
+        <mu1 value="1.0"/>
+        <mu2 value="1.0"/>
+        <kp  value="10000000.0" />
+        <kd  value="1.0" />
+        <fdir1 value="0 0 1"/>
         <material>Gazebo/White</material>
         <gravity>1</gravity>
     </gazebo>
     <gazebo reference="left_wheel_front">
-        <mu1 value="0.001"/>
-        <mu2 value="0.01"/>
+        <mu1 value="1.0"/>
+        <mu2 value="1.0"/>
+        <kp  value="10000000.0" />
+        <kd  value="1.0" />
+        <fdir1 value="0 0 1"/>
         <material>Gazebo/White</material>
         <gravity>1</gravity>
     </gazebo>

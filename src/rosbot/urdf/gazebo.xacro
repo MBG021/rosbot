@@ -32,30 +32,33 @@
             <param name="initial_velocity">0.0</param>
         </joint>
 
-        <!-- Define the steering wheel joint (for direction control) -->
+        <!-- Define the steering wheel joint (for direction control) 
         <joint name="master_joint">
             <command_interface name="position">
-                <param name="min">-0.349</param> <!-- -20 degrees -->
-                <param name="max">0.349</param>  <!-- +20 degrees -->
+                <param name="min">-0.349</param> 
+                <param name="max">0.349</param>  
             </command_interface>
             <state_interface name="position"/>
             <param name="initial_position">0.0</param>
-        </joint>
+        </joint>-->
 
         <!-- Define the steering wheel joint (for direction control) -->
         <joint name="joint_left_wheel_front">
-            <param name="mimic">master_joint</param>
+            <!--<param name="mimic">master_joint</param>-->
             <param name="multiplier">1</param>
             <command_interface name="position"/>
             <state_interface name="position"/>
         </joint>
             <!-- Define the steering wheel joint (for direction control) -->
         <joint name="joint_right_wheel_front">
-            <param name="mimic">master_joint</param>
+            <!--<param name="mimic">master_joint</param>-->
             <param name="multiplier">1</param>
             <command_interface name="position"/>
             <state_interface name="position"/>
         </joint>
+
+        
+
     </ros2_control>
 
     <!-- Load robot's controller -->

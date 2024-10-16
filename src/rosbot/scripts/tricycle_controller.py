@@ -63,7 +63,7 @@ class TeleopNode(Node):
     def __init__(self):
         super().__init__('teleop_node')
         # Cambiamos el tipo de mensaje a TwistStamped
-        self.pub = self.create_publisher(TwistStamped, '/tricycle_steering_controller/reference', 10)
+        self.pub = self.create_publisher(TwistStamped, '/ackermann_steering_controller/reference', 10)
 
         self.speed = 0.2
         self.turn = 1.0

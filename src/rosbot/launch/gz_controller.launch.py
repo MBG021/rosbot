@@ -74,7 +74,7 @@ def generate_launch_description():
     jgpc_spawner_node = Node(
 		package="controller_manager",
 		executable="spawner",
-		arguments= ["tricycle_steering_controller"]
+		arguments= ["ackermann_steering_controller"]
 	)
 
     

@@ -157,7 +157,7 @@
     <axis xyz="0 1 0"/>
     <dynamics damping="0.0" friction="0.1"/>
     <limit effort="100" velocity="1" lower="-0.78" upper="0.78"/>
-    <mimic joint="master_joint" multiplier="1.0" offset="0"/>
+    <!--<mimic joint="master_joint" multiplier="1.0" offset="0"/>-->
   </joint>
 
   <joint name="right_wheel_joint" type="continuous">
@@ -214,7 +214,7 @@
     <origin xyz="0.27 0.295 -0.06" rpy="1.57 0 0"/>
     <axis xyz="0 1 0"/>
     <limit effort="100" velocity="1" lower="-0.78" upper="0.78"/>
-    <mimic joint="master_joint" multiplier="1.0" offset="0"/>
+    <!--<mimic joint="master_joint" multiplier="1.0" offset="0"/>-->
   </joint>
 
   <joint name="left_wheel_joint" type="continuous">
