@@ -25,8 +25,8 @@ tricycle_steering_controller:
     rear_wheels_names: [joint_left_rear_wheel, joint_right_rear_wheel]
     front_wheels_names: [master_joint]
 
-    wheelbase: 0.37266  # 0.12422+0.24844
-    wheel_track: 0.4303 # 0.21515*2
+    wheelbase: 0.37266  
+    wheel_track: 0.4303  
 
     front_wheels_radius: 0.12
     rear_wheels_radius: 0.12

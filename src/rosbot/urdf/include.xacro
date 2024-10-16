@@ -24,6 +24,7 @@
     <!-- Especificaciones de gazebo -->
     <gazebo reference="chasis">
         <material>Gazebo/Blue</material>
+        <gravity>1</gravity>
     </gazebo>
     <gazebo reference="master">
         <material>Gazebo/Blue</material>
@@ -32,16 +33,28 @@
         <material>Gazebo/Black</material>
     </gazebo>
     <gazebo reference="right_wheel">
+        <mu1 value="0.001"/>
+        <mu2 value="0.01"/>
         <material>Gazebo/White</material>
+        <gravity>1</gravity>
     </gazebo>
     <gazebo reference="left_wheel">
+        <mu1 value="0.001"/>
+        <mu2 value="0.01"/>
         <material>Gazebo/White</material>
+        <gravity>1</gravity>
     </gazebo>
     <gazebo reference="right_wheel_front">
+        <mu1 value="0.001"/>
+        <mu2 value="0.01"/>
         <material>Gazebo/White</material>
+        <gravity>1</gravity>
     </gazebo>
     <gazebo reference="left_wheel_front">
+        <mu1 value="0.001"/>
+        <mu2 value="0.01"/>
         <material>Gazebo/White</material>
+        <gravity>1</gravity>
     </gazebo>
 
     <gazebo reference="camera_link">
@@ -82,8 +95,8 @@
                 <scan>
                     <horizontal>
                         <samples>120</samples>
-                        <min_angle>-3.14</min_angle>
-                        <max_angle>3.14</max_angle>
+                        <min_angle>-3.1</min_angle>
+                        <max_angle>3.1</max_angle>
                     </horizontal>
                 </scan>
                 <range>
