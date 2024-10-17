@@ -16,22 +16,27 @@
   <link name="chasis">
     <visual>
       <geometry>
-        <mesh filename="package://rosbot/meshes/box.STL" scale="0.001 0.001 0.001"/>
+        <box size="0.65 0.35 0.15"/>
+        <!--<mesh filename="package://rosbot/meshes/box.STL" scale="0.001 0.001 0.001"/>-->
       </geometry>
-      <origin xyz="-0.381 0.2 -0.075" rpy = "1.57 0 0"/>
+      <!--<origin xyz="-0.381 0.2 -0.075" rpy = "1.57 0 0"/>-->
       <material name="blue"/>
     </visual>
     <collision>
-      <origin xyz="-0.381 0.2 -0.075" rpy = "1.57 0 0"/>
+      <!--<origin xyz="-0.381 0.2 -0.075" rpy = "1.57 0 0"/>-->
       <geometry>
-        <mesh filename="package://rosbot/meshes/box.STL" scale="0.001 0.001 0.001"/>
+        <box size="0.65 0.35 0.15"/>
+        <!--<mesh filename="package://rosbot/meshes/box.STL" scale="0.001 0.001 0.001"/>-->
       </geometry>
     </collision>
-    <inertial>
+    <xacro:inertial_box mass="35" x="0.65" y="0.35" z="0.15">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:inertial_box>
+    <!--<inertial>
       <origin xyz="-0.381 0.2 -0.075" rpy = "1.57 0 0"/>
       <mass value="35"/>
       <inertia  ixx="532291666.6666666" ixy="0" ixz="0" iyy="2151333333.333333" iyz="0" izz="1750291666.6666665" />
-    </inertial>
+    </inertial>-->
   </link>
 
   <!--Right-->

@@ -59,3 +59,9 @@ $ ros2 launch rosbot rviz_robot.launch.py
 Para simular el rover en Gazebo, usa el siguiente comando:
 
 $ ros2 launch rosbot urdf_gz.launch.py
+
+# Teleoperacion en gazebo
+
+ventana 1: ros2 launch rosbot gz_controller.launch.py
+
+ventana 2: ros2 run rosbot tricycle_controller.py 
