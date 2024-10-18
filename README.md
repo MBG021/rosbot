@@ -18,13 +18,15 @@ $ sudo apt update
 
 $ sudo apt upgrade
 
-$ sudo apt-get install ros-humble-joint-state-publisher*
+$ sudo apt install ros-humble-joint-state-publisher*
 
-$ sudo apt-get install ros-humble-xacro
+$ sudo apt install ros-humble-xacro
 
-$ sudo apt-get install ros-humble-gazebo-*
+$ sudo apt install ros-humble-gazebo-*
 
-$ ros-humble-rosgraph*
+$ sudo apt install ros-humble-ackermann-*
+
+$ sudo apt install ros-humble-rosgraph*
 
 # Configuración del Entorno
 
@@ -64,4 +66,4 @@ $ ros2 launch rosbot urdf_gz.launch.py
 
 ventana 1: ros2 launch rosbot gz_controller.launch.py
 
-ventana 2: ros2 run rosbot tricycle_controller.py 
+ventana 2: ros2 run rosbot ack_controller.py 
