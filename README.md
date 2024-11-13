@@ -32,8 +32,6 @@ $ sudo apt install ros-humble-control*
 
 $ sudo apt install ros-humble-ros2*
 
-$ pip install modern_robotics
-
 # Configuración del Entorno
 
 Agrega la siguiente línea a tu archivo .bashrc para asegurarte de que el entorno ROS esté correctamente configurado:
